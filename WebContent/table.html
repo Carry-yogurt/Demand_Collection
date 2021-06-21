@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>需求征集表</title>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<script type="text/javascript" src="../js/bootstrap.js" ></script>
+		<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
+		<style>
+			input{
+				
+			}
+		</style>
+		<script>
+			$(document).ready(function(){
+				//$("input").addClass("form-control");
+				$("#qt").click(function(){
+				    //alert("hh");
+				    $("#qtt").slideToggle();
+				});
+				$("#qt1").click(function(){
+				    //alert("hh");
+				    $("#qt1t").slideToggle();
+				});
+				$("#qt2").click(function(){
+				    //alert("hh");
+				    $("#qt2t").slideToggle();
+				});
+				
+				//设置五个关键字的动作
+				$("#gjz1").change(function(){
+					if($("#gjz1").val()!=""){
+						$("#gjz2").removeAttr("disabled");
+					}else{
+						$("#gjz2").val("");
+						$("#gjz2").attr("disabled","disabled");
+						$("#gjz3").val("");
+						$("#gjz3").attr("disabled","disabled");
+						$("#gjz4").val("");
+						$("#gjz4").attr("disabled","disabled");
+						$("#gjz5").val("");
+						$("#gjz5").attr("disabled","disabled");
+					}
+				});
+				$("#gjz2").change(function(){
+					if($("#gjz2").val()!=""){
+						$("#gjz3").removeAttr("disabled");
+					}else{
+						$("#gjz3").val("");
+						$("#gjz3").attr("disabled","disabled");
+						$("#gjz4").val("");
+						$("#gjz4").attr("disabled","disabled");
+						$("#gjz5").val("");
+						$("#gjz5").attr("disabled","disabled");
+					}
+				});
+				$("#gjz3").change(function(){
+					if($("#gjz3").val()!=""){
+						$("#gjz4").removeAttr("disabled");
+					}else{
+						$("#gjz4").val("");
+						$("#gjz4").attr("disabled","disabled");
+						$("#gjz5").val("");
+						$("#gjz5").attr("disabled","disabled");
+					}
+				});
+				$("#gjz4").change(function(){
+					if($("#gjz4").val()!=""){
+						$("#gjz5").removeAttr("disabled");
+					}else{
+						$("#gjz5").val("");
+						$("#gjz5").attr("disabled","disabled");
+					}
+				});
+				//控制textarea区域字数
+				$("#jgjj").on("keyup",function(){
+					$("#jgjj-count").text($("#jgjj").val().length);
+					if($("#jgjj").val().length>500){
+						$("#jgjj-count").text(500);
+						$("#jgjj").val($("#jgjj").val().substring(0,500));
+					}
+				});
+				$("#zywt").on("keyup",function(){
+					$("#zywt-count").text($("#zywt").val().length);
+					if($("#zywt").val().length>500){
+						$("#zywt-count").text(500);
+						$("#zywt").val($("#zywt").val().substring(0,500));
+					}
+				});
+				$("#jsgj").on("keyup",function(){
+					$("#jsgj-count").text($("#jsgj").val().length);
+					if($("#jsgj").val().length>500){
+						$("#jsgj-count").text(500);
+						$("#jsgj").val($("#jsgj").val().substring(0,500));
+					}
+				});
+				$("#yqmb").on("keyup",function(){
+					$("#yqmb-count").text($("#yqmb").val().length);
+					if($("#yqmb").val().length>500){
+						$("#yqmb-count").text(500);
+						$("#yqmb").val($("#yqmb").val().substring(0,500));
+					}
+				});
+				
+				
+				//结束时间晚于起始时间
+				$("#starttime").change(function(){
+					$("#endtime").val($("#starttime").val());
+					//alert($("#starttime").val());
+				});
+				$("#endtime").change(function(){
+					if($("#endtime").val()<$("#starttime").val()){
+						$("#endtime").val($("#starttime").val());
+						alert("结束时间应晚于起始时间");
+					}
+					else{
+						var date = new Date();
+					    this.year = date.getFullYear();
+					    this.month = date.getMonth() + 1;
+					    this.date = date.getDate();
+					    var currentTime =  this.year + "-" + this.month + "-" + this.date   ;
+						//alert(currentTime);
+//						alert(day);
+						if($("#endtime").val().substring(0,4)<this.year){
+							alert("结束年份应大于等于当前年份")
+							$("#endtime").val(currentTime);
+						}
+					}
+						
+					
+				});
+				
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<table class="table  table-bordered">
+				<form>
+					<tr>
+						<td>
+							<label for="jgqc">*机构全称</label>
+						</td>
+						<td colspan="2">
+							<input type="text" name="jgqc" id="jgqc" value="" required="required" />
+						</td>
+						<td>
+							<label for="gkglbm">归口管理部门</label>
+						</td>
+						<td>
+							<input type="text" name="gkglbm" id="gkglbm" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="txdz">*通讯地址</label>
+						</td>
+						<td colspan="2">
+							<input type="text" name="txdz" id="txdz" value="" required="required" />
+						</td>
+						<td>
+							<label for="szdy">*所在地域</label>
+						</td>
+						<td>
+							<input type="text" name="szdy" id="szdy" value="" required="required" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="wz">网址</label>
+						</td>
+						<td colspan="2">
+							<input type="text" name="wz" id="wz" value="" />
+						</td>
+						<td>
+							<label for="dzxx">*电子信箱</label>
+						</td>
+						<td>
+							<input type="email" name="dzxx" id="dzxx" value="" required="required" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="frdb">*法人代表</label>
+						</td>
+						<td colspan="2">
+							<input type="text" name="frdb" id="frdb" value="" required="required" />
+						</td>
+						<td>
+							<label for="yzbm">邮政编码</label>
+						</td>
+						<td>
+							<input type="text" name="yzbm" id="yzbm" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="lxr" style="color: red;">*联系人</label>
+						</td>
+						<td colspan="2">
+							<input type="text" name="lxr" id="lxr" value="" required="required" />
+						</td>
+						<td>
+							<label for="gddh" style="color: red;">*固定电话</label>
+						</td>
+						<td>
+							<input type="text" name="gddh" id="gddh" value="" required="required" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="sj" style="color: red;">*手机</label>
+						</td>
+						<td colspan="2">
+							<input type="text" name="sj" id="sj" value="" required="required" />
+						</td>
+						<td>
+							<label for="cz">传真</label>
+						</td>
+						<td>
+							<input type="text" name="cz" id="cz" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="jgsx">*机构属性</label>
+						</td>
+						<td colspan="4">
+							<input type="radio" name="jgsx" id="qy" value="企业" required="required" /><label for="qy" >企业</label>
+							<input type="radio" name="jgsx" id="gdyx" value="高等院校" /><label for="gdyx">高等院校</label>
+							<input type="radio" name="jgsx" id="yjjg" value="研究机构" /><label for="yjjg">研究机构</label>
+							<input type="radio" name="jgsx" id="qt" value="其他" /><label for="qt">其他</label>
+							<input style="display:none;" name="jgsx" type="text" id="qtt"/>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							<label for="jgjj">*机构简介（主要包括基本情况、现有研究基础等，限500字以内</label><br />
+							<textarea name="jgjj" id="jgjj" rows="5" cols="100" maxlength="500" required="required"></textarea>
+							<i><span id="jgjj-count">0</span>/500</i>  
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="jsxqmc">*技术需求名称</label>
+						</td>
+						<td colspan="2">
+							<input type="text" name="jsxqmc" id="jsxqmc" value="" required="required"/>
+						</td>
+						<td>
+							<label for="xqsx">*需求时限</label>
+						</td>
+						<td>
+							<input type="date" name="starttime" id="starttime" value="" required="required" />
+							<label for="starttime">年至</label>
+							<input type="date" name="endtime" id="endtime" value="" required="required" />
+							<label for="endtime">年</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							<label for="zywt">*技术需求概述</label><br />
+							<label for="zywt">1.主要问题（需要解决的重大技术问题，限500字以内）</label><br />
+							<textarea name="zywt" id="zywt" rows="5" cols="100" maxlength="500" required="required"></textarea>
+							<i><span id="zywt-count">0</span>/500</i><br /><br />
+							<label for="jsgj">2.技术关键（所需的关键技术，限500字以内）</label><br />
+							<textarea name="jsgj" id="jsgj" rows="5" cols="100" maxlength="500" required="required"></textarea>
+							<i><span id="jsgj-count">0</span>/500</i><br />
+							<label for="yqmb">3.预期目标（技术创新性、经济社会效益，限500字以内）</label><br />
+							<textarea name="yqmb" id="yqmb" rows="5" cols="100" maxlength="500" required="required"></textarea>
+							<i><span id="yqmb-count">0</span>/500</i><br />
+						</td>
+					</tr>
+					<tr>
+						
+						<td colspan="5">
+							<label for="gjz1">*关键字：(1-5个)五个文本框(只能逐个顺序录入)</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="text" name="gjz1" id="gjz1" value="" required="required"/>
+						</td>
+						<td>
+							<input type="text" name="gjz2" id="gjz2" value="" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="text" name="gjz3" id="gjz3" value="" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="text" name="gjz4" id="gjz4" value="" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="text" name="gjz5" id="gjz5" value="" disabled="disabled"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="ntrzjze">拟投入资金总额</label>
+						</td>
+						<td colspan="4">
+							<input type="text" name="ntrzjze" id="ntrzjze" value="" />
+							<label>万元</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="dlyf">*技术需求解决方式</label>
+						</td>
+						<td colspan="4">
+							<input type="radio" name="jsxqjjfs" id="dlyf" value="独立研发" /><label for="dlyf">独立研发</label>
+							<input type="radio" name="jsxqjjfs" id="wtyf" value="委托研发" /><label for="wtyf">委托研发</label>
+							<input type="radio" name="jsxqjjfs" id="hzyf" value="合作研发" /><label for="hzyf">合作研发</label>
+							<input type="radio" name="jsxqjjfs" id="qt1" value="其他" /><label for="qt1">其他</label>
+							<input style="display:none;" name="jsxqjjfs" type="text" id="qt1t"/>
+							<br />
+							<label for="hzyxdw">合作意向单位</label>
+							<input type="text" name="hzyxdw" id="hzyxdw" value="" />
+							<label>(选填)</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="kjhdlx">*科技活动类型</label>
+						</td>
+						<td colspan="4">
+							<input type="radio" name="kjhdlx" id="jcyj" value="基础研究" /><label for="jcyj">基础研究</label>
+							<input type="radio" name="kjhdlx" id="yyyj" value="应用研究" /><label for="yyyj">应用研究</label>
+							<input type="radio" name="kjhdlx" id="syfz" value="试验发展" /><label for="syfz">试验发展</label>
+							<input type="radio" name="kjhdlx" id="yjysyfzcgyy" value="研究与试验发展成果应用" /><label for="yjysyfzcgyy">研究与试验发展成果应用</label>
+							<input type="radio" name="kjhdlx" id="jstgykjfw" value="技术推广与科技服务" /><label for="jstgykjfw">技术推广与科技服务</label>
+							<input type="radio" name="kjhdlx" id="scxhd" value="生产性活动" /><label for="scxhd">生产性活动</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="xkfl"><a class="glyphicon glyphicon-asterisk" style="color: red;"></a>学科分类(限基础研究填写)</label>
+						</td>
+						<td colspan="4">
+							(参见学科分类)三级下拉文本框
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="xqjsyyhy"><a class="glyphicon glyphicon-asterisk" style="color: red;"></a>需求技术应用行业(非基础研究填写)(可多选)</label>
+						</td>
+						<td colspan="4">
+							<input type="checkbox" name="xqjsyyhy" id="dzxxi" value="电子信息" /><label for="dzxxi">电子信息</label>
+							<input type="checkbox" name="xqjsyyhy" id="gjdyth" value="光机电一体化" /><label for="gjdyth">光机电一体化</label>
+							<input type="checkbox" name="xqjsyyhy" id="swjsyzy" value="生物技术与制药" /><label for="swjsyzy">生物技术与制药</label>
+							<input type="checkbox" name="xqjsyyhy" id="xcljyy" value="新材料及应用" /><label for="xcljyy">新材料及应用</label>
+							<input type="checkbox" name="xqjsyyhy" id="xdny" value="现代农业" /><label for="xdny">现代农业</label>
+							<input type="checkbox" name="xqjsyyhy" id="xnyygxjn" value="新能源与高效节能" /><label for="xnyygxjn">新能源与高效节能</label>
+							<input type="checkbox" name="xqjsyyhy" id="zyyhj" value="资源与环境" /><label for="zyyhj">资源与环境</label><br />
+							<input type="checkbox" name="xqjsyyhy" id="gjsfwy" value="高技术服务业" /><label for="gjsfwy">高技术服务业</label>
+							<input type="checkbox" name="xqjsyyhy" id="hy" value="海洋" /><label for="hy">海洋</label>
+							<input type="checkbox" name="xqjsyyhy" id="shggsy" value="社会公共事业" /><label for="shggsy">社会公共事业</label>
+							<input type="checkbox" name="xqjsyyhy" id="ylws" value="医疗卫生" /><label for="ylws">医疗卫生</label>
+							<input type="checkbox" name="xqjsyyhy" id="qt2" value="其他(注明)" />
+							<label for="qt2">其他(注明)</label>
+							<input style="display:none;" name="xqjsyyhy" type="text" id="qt2t"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="xqjsyyhy"><a class="glyphicon glyphicon-asterisk" style="color: red;"></a>需求技术应用行业(非基础研究填写)</label>
+						</td>
+						<td colspan="4">
+							<label>（参见国民经济行业分类）三级下拉文本框</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							<!--<input type="submit" name="submit" id="submit" value="保存并提交" />
+							<input type="button" name="bc" id="bc" value="保存" />
+							<input type="reset" name="reset" id="reset" value="重置" />
+							<input type="button" name="qx" id="qx" value="取消" />-->
+							<!--onsubmit="return confirm("需求信息审核后不能修改！ 确定提交吗")"-->
+							<div class="container-fluid">
+								<div class="row" >
+									<div class="col-md-3" style="text-align: center;"><button type="submit" OnClick="return confirm('需求信息审核后不能修改！ 确定提交吗')"  class="btn btn-success" >保存并提交</button></div>
+									<div class="col-md-3" style="text-align: center;"><button  class="btn btn-info">保存</button></div>
+									<div class="col-md-3" style="text-align: center;"><button type="reset" class="btn btn-warning">重置</button></div>
+									<div class="col-md-3" style="text-align: center;"><button type="" class="btn btn-danger">取消</button></div>
+								</div>
+							</div>
+							
+						</td>
+					</tr>
+				</form>
+		</table>
+			
+		</div>
+		
+		
+	</body>
+</html>
